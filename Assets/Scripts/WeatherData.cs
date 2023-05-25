@@ -1,20 +1,32 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class JsonWeatherData
+[Serializable]
+public class WeatherData
 {
-
+    public List<Data> Data;
 }
 
-[System.Serializable]
+[Serializable]
+public class Data
+{
+    public string name;
+    public coord coord;
+    public weather[] weather;
+    public main main;
+    public wind wind;
+    public clouds clouds;
+    public sys sys;
+}
+
+[Serializable]
 public class coord
 {
     public float lon;
     public float lat;
 }
 
-[System.Serializable]
+[Serializable]
 public class weather
 {
     public int id;
@@ -23,7 +35,7 @@ public class weather
     public string icon;
 }
 
-[System.Serializable]
+[Serializable]
 public class main
 {
     public float temp;
@@ -36,7 +48,7 @@ public class main
     public float grnd_level;
 }
 
-[System.Serializable]
+[Serializable]
 public class wind
 {
     public float speed;
@@ -44,14 +56,13 @@ public class wind
     public float gust;
 }
 
-
-[System.Serializable]
+[Serializable]
 public class clouds
 {
     public float all;
 }
 
-[System.Serializable]
+[Serializable]
 public class sys
 {
     public int type;
@@ -60,23 +71,3 @@ public class sys
     public int sunrise;
     public int sunset;
 }
-
-[System.Serializable]
-public class WeatherData
-{
-    public coord coord;
-    public weather[] weather;
-    public main main;
-    public int visibility;
-    public wind wind;
-    public clouds clouds;
-    public int dt;
-    public sys sys;
-    public int timezone;
-    public int id;
-    public string name;
-    public int cod;
-}
-
-
-

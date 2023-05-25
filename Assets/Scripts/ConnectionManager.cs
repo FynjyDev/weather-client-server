@@ -1,31 +1,38 @@
+using UnityEngine.Networking;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Networking;
 
 public class ConnectionManager : MonoBehaviour
 {
-    public WeatherData weatherData;
-
-    private string url = "https://api.openweathermap.org/data/2.5/weather?lat=55.751244&lon=37.618423&appid=6e158cda558fb62251ab77306ba0c1b0&units=metric";
+    public DataManager DataManager;
+    private string apiKey = "6e158cda558fb62251ab77306ba0c1b0";
 
     private void Awake()
     {
-        StartCoroutine(GetWeatherData());
+        for (int i = 0; i < DataManager.CitiesData.Count; i++)
+            StartCoroutine(GetWeatherData(BuildUrl(DataManager.CitiesData[i].Lat, DataManager.CitiesData[i].Lon)));
     }
 
-    private IEnumerator GetWeatherData()
+    private IEnumerator GetWeatherData(string _url)
     {
-        UnityWebRequest www = new UnityWebRequest(url);
-        www.downloadHandler = new DownloadHandlerBuffer();
+        UnityWebRequest _webRequest = new UnityWebRequest(_url);
+        _webRequest.downloadHandler = new DownloadHandlerBuffer();
 
-        yield return www.SendWebRequest();
+        yield return _webRequest.SendWebRequest();
 
-        if (www.result != UnityWebRequest.Result.Success) Debug.LogError(www.error);
-        else GetWeather(www.downloadHandler.text);
+        if (_webRequest.result != UnityWebRequest.Result.Success) Debug.LogError(_webRequest.error);
+        else SetDataWeather(_webRequest.downloadHandler.text);
     }
 
-    private void GetWeather(string _jsonData)
+    private string BuildUrl(float _lon, float _lat)
     {
-        weatherData = JsonUtility.FromJson<WeatherData>(_jsonData);
+        return $"https://api.openweathermap.org/data/2.5/weather?lat={_lat}&lon={_lon}&appid={apiKey}&units=metric";
+    }
+
+    private void SetDataWeather(string _jsonData)
+    {
+        DataManager.WeatherData.Data.Add(JsonUtility.FromJson<Data>(_jsonData));
     }
 }
+
+
