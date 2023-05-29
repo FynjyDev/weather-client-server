@@ -4,12 +4,6 @@ using System.Collections.Generic;
 [Serializable]
 public class WeatherData
 {
-    public List<Data> Data;
-}
-
-[Serializable]
-public class Data
-{
     public string name;
     public coord coord;
     public weather[] weather;

@@ -123,6 +123,51 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &517377315
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 517377317}
+  - component: {fileID: 517377316}
+  m_Layer: 0
+  m_Name: <-Location Manager->
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &517377316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517377315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a68793d2c9785442b5a369257948f72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DataManager: {fileID: 1318727723}
+--- !u!4 &517377317
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517377315}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.553419, y: 4.2193146, z: -6.6164093}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &567676078
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,7 +276,7 @@ GameObject:
   - component: {fileID: 1318727722}
   - component: {fileID: 1318727723}
   m_Layer: 0
-  m_Name: <-Data Mahager->
+  m_Name: <-Data Manager->
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -250,7 +295,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1318727723
 MonoBehaviour:
@@ -264,12 +309,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 049a0a33a82ebb847bd69b3d4c095b9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CitiesData:
-  - CityName: Moscow
-    Lon: 55.751244
-    Lat: 37.618423
+  LocationData:
+    ip: 
+    hostname: 
+    city: 
+    region: 
+    country: 
+    loc: 
+    org: 
+    postal: 
+    timezone: 
   WeatherData:
-    Data: []
+    name: 
+    coord:
+      lon: 0
+      lat: 0
+    weather: []
+    main:
+      temp: 0
+      feels_like: 0
+      temp_min: 0
+      temp_max: 0
+      pressure: 0
+      humidity: 0
+      sea_level: 0
+      grnd_level: 0
+    wind:
+      speed: 0
+      deg: 0
+      gust: 0
+    clouds:
+      all: 0
+    sys:
+      type: 0
+      id: 0
+      country: 
+      sunrise: 0
+      sunset: 0
 --- !u!1 &1668097210
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,7 +357,7 @@ GameObject:
   - component: {fileID: 1668097212}
   - component: {fileID: 1668097211}
   m_Layer: 0
-  m_Name: <-Connection Manager->
+  m_Name: <-Weather Manager->
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
