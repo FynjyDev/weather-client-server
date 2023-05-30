@@ -4,25 +4,25 @@ using UnityEngine;
 
 public class LocationManager : MonoBehaviour
 {
-	public DataManager DataManager;
+	public delegate void OnLocationDataReady();
+	public static OnLocationDataReady onLocationDataReady;
 
-	private void Start()
+	public void GetLocationData(DataManager _dataManager)
 	{
-		StartCoroutine(OnGetLocationData());
+		StartCoroutine(OnGetLocationData(_dataManager));
 	}
 
-	private IEnumerator OnGetLocationData()
+	private IEnumerator OnGetLocationData(DataManager _dataManager)
 	{
 		UnityWebRequest _webRequest = UnityWebRequest.Get("https://ipinfo.io/json?token=2fed08aa6b1760");
 
 		yield return _webRequest.SendWebRequest();
 
 		if (_webRequest.result != UnityWebRequest.Result.Success) Debug.LogError(_webRequest.error);
-		else SetLocationData(_webRequest.downloadHandler.text);
-	}
-
-	private void SetLocationData(string _jsonData)
-	{
-		DataManager.LocationData = JsonUtility.FromJson<LocationData>(_jsonData);
+		else
+		{
+			_dataManager.LocationData = JsonUtility.FromJson<LocationData>(_webRequest.downloadHandler.text);
+			onLocationDataReady?.Invoke();
+		}
 	}
 }
