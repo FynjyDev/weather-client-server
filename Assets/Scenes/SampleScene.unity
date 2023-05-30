@@ -800,10 +800,10 @@ MonoBehaviour:
     org: 
     postal: 
     timezone: 
+  DateManager: {fileID: 1212605618}
   DateData:
     dayName: 
     dayNumber: 
-  DateManager: {fileID: 0}
   WeatherManager: {fileID: 1668097211}
   WeatherData:
     name: 
@@ -986,6 +986,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TemperatureText: {fileID: 2087174704}
+  DateText: {fileID: 489697040}
 --- !u!1 &1668097210
 GameObject:
   m_ObjectHideFlags: 0

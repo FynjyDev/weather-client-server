@@ -20,6 +20,6 @@ public class AppStateController : MonoBehaviour
         string _temperature = DataManager.WeatherData.main.temp.ToString();
         string _wholeTemperature = _temperature.Substring(0, _temperature.IndexOf(","));
 
-        UIManager.ShowData(_wholeTemperature);
+        UIManager.ShowData(_wholeTemperature, DataManager.DateData.dayName, DataManager.DateData.dayNumber);
     }
 }

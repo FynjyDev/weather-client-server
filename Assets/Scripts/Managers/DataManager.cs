@@ -9,8 +9,8 @@ public class DataManager : MonoBehaviour
     public LocationData LocationData;
 
     [Header("Date")]
-    public DateData DateData;
     public DateManager DateManager;
+    public DateData DateData;
 
     [Header("Weather")]
     public WeatherManager WeatherManager;
