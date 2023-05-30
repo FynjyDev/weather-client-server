@@ -8,6 +8,10 @@ public class DataManager : MonoBehaviour
     public LocationManager LocationManager;
     public LocationData LocationData;
 
+    [Header("Date")]
+    public DateData DateData;
+    public DateManager DateManager;
+
     [Header("Weather")]
     public WeatherManager WeatherManager;
     public WeatherData WeatherData;
@@ -21,6 +25,7 @@ public class DataManager : MonoBehaviour
     public void OnGetData()
     {
         LocationManager.GetLocationData(this);
+        DateManager.GetDateData(this);
     }
 
     private void GetWeatherData()

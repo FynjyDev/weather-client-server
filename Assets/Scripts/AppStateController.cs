@@ -17,6 +17,9 @@ public class AppStateController : MonoBehaviour
 
     public void UpdateData()
     {
-        UIManager.ShowData();
+        string _temperature = DataManager.WeatherData.main.temp.ToString();
+        string _wholeTemperature = _temperature.Substring(0, _temperature.IndexOf(","));
+
+        UIManager.ShowData(_wholeTemperature);
     }
 }
