@@ -18,8 +18,11 @@ public class AppStateController : MonoBehaviour
     public void UpdateData()
     {
         string _temperature = DataManager.WeatherData.main.temp.ToString();
+        string _feelsTemperature = DataManager.WeatherData.main.feels_like.ToString();
+
+        string _wholeFeelsTemperature = _feelsTemperature.Substring(0, _temperature.IndexOf(",") - 1);
         string _wholeTemperature = _temperature.Substring(0, _temperature.IndexOf(","));
 
-        UIManager.ShowData(_wholeTemperature, DataManager.DateData.dayName, DataManager.DateData.dayNumber);
+        UIManager.ShowData(_wholeTemperature, _wholeFeelsTemperature, DataManager.DateData.dayName, DataManager.DateData.dayNumber);
     }
 }
